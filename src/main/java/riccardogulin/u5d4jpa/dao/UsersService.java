@@ -32,4 +32,24 @@ public class UsersService {
 
 		return usersRepo.findById(id).orElseThrow(() -> new ItemNotFoundException(id));
 	}
+
+	public void findByIdAndUpdate(int id, User u) throws ItemNotFoundException {
+
+		User found = this.findById(id);
+		found.setId(id);
+		found.setName(u.getName());
+		found.setSurname(u.getSurname());
+		found.setEmail(u.getEmail());
+		usersRepo.save(found);
+	}
+
+	public void findByIdAndDelete(int id) throws ItemNotFoundException {
+		User found = this.findById(id);
+		usersRepo.delete(found);
+	}
+
+	public long count() {
+		return usersRepo.count();
+	}
+
 }

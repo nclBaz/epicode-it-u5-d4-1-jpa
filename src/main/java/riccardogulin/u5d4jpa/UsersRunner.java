@@ -16,9 +16,9 @@ public class UsersRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		User aldo = new User();
-		aldo.setEmail("aldo@baglio.it");
-		aldo.setName("Aldo");
-		aldo.setSurname("Baglio");
+		aldo.setEmail("giacomo@poretti.it");
+		aldo.setName("Giacomo");
+		aldo.setSurname("Poretti");
 
 //		usersService.create(aldo);
 
@@ -32,6 +32,27 @@ public class UsersRunner implements CommandLineRunner {
 		} catch (ItemNotFoundException e) {
 			System.out.println(e);
 		}
+
+		System.out.println("*********************** FIND BY ID AND UPDATE ***********************");
+		try {
+			usersService.findByIdAndUpdate(2, aldo);
+			System.out.println(usersService.findById(2));
+
+		} catch (ItemNotFoundException e) {
+			System.out.println(e);
+		}
+
+		System.out.println("*********************** FIND BY ID AND DELETE ***********************");
+		try {
+			usersService.findByIdAndDelete(3);
+			System.out.println(usersService.findById(3));
+
+		} catch (ItemNotFoundException e) {
+			System.out.println(e);
+		}
+
+		System.out.println("*********************** COUNT ***********************");
+		System.out.println(usersService.count());
 
 	}
 
