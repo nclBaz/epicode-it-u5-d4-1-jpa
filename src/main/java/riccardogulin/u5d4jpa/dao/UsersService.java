@@ -33,6 +33,14 @@ public class UsersService {
 		return usersRepo.findById(id).orElseThrow(() -> new ItemNotFoundException(id));
 	}
 
+	public User findByName(String name) throws ItemNotFoundException {
+		return usersRepo.findByName(name).orElseThrow(() -> new ItemNotFoundException());
+	}
+
+	public List<User> findByNameIgnoreCase(String name) {
+		return usersRepo.findByNameStartingWithIgnoreCase(name);
+	}
+
 	public void findByIdAndUpdate(int id, User u) throws ItemNotFoundException {
 
 		User found = this.findById(id);

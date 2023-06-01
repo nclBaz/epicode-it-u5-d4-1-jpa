@@ -54,6 +54,18 @@ public class UsersRunner implements CommandLineRunner {
 		System.out.println("*********************** COUNT ***********************");
 		System.out.println(usersService.count());
 
+		System.out.println("*********************** FIND BY NAME ***********************");
+		try {
+			System.out.println(usersService.findByName("aldo"));
+
+		} catch (ItemNotFoundException e) {
+			System.out.println(e);
+		}
+
+		System.out.println("*********************** FIND BY NAME AND IGNORE CASE ***********************");
+
+		System.out.println(usersService.findByNameIgnoreCase("A"));
+
 	}
 
 }
